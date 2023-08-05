@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TodoForm from './TodoForm';
 import {v4 as uuidv4} from 'uuid';
 import Todo from './Todo';
@@ -28,6 +28,11 @@ const TodoWrapper = () => {
     const editTask = (task,id) => {
         setTodos(todos.map(todo => todo.id === id ? {...todo, task, isEditing: !todo.isEditing} : todo))
     }
+
+    useEffect(() => {
+      document.title = `You have ${todos.length} pending task(s)`;
+    });
+    
   return (
     <div className="todo-wrapper">
       <h1>TO DO LIST !</h1>
